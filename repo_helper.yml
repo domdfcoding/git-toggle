@@ -17,3 +17,7 @@ python_versions:
   - 3.7
   - 3.8
   - 3.9-dev
+
+console_scripts:
+  - git-toggle=git_toggle.__main__:main
+  - git_toggle=git_toggle.__main__:main
