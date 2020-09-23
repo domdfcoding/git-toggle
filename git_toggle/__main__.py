@@ -53,15 +53,28 @@ def main(argv: Optional[List[str]] = None) -> int:
 			help="Apply the settings to the remote with the given name. Default '%(default)s'.",
 			default="origin",
 			)
+	parser.add_argument("--list", help="List the current remotes.", action="store_true")
 
 	args = parser.parse_args(argv)
+	config = Repo('.').get_config()
+
+	if args.list:
+		remotes = []
+		for key in list(config.keys()):
+			if key[0] == b"remote":
+				remotes.append((key[1].decode("UTF-8"), config.get(key, "url").decode("UTF-8")))
+
+		longest_name = max(len(x[0]) for x in remotes)
+
+		for entry in remotes:
+			print(f"{entry[0]}{' ' * (longest_name - len(entry[0]))}  {entry[1]}")
+
+		return 0
 
 	if not any([args.https, args.ssh, args.username]):
 		parser.error("One of --https, --ssh, --username required.")
 	elif args.https and args.ssh:
 		parser.error("Only one of --https, --ssh permitted.")
-
-	config = Repo('.').get_config()
 
 	try:
 		current_remote = config.get(("remote", args.name), "url").decode("UTF-8")
@@ -108,6 +121,8 @@ def main(argv: Optional[List[str]] = None) -> int:
 			set_ssh()
 
 	config.write_to_path()
+
+	return 0
 
 
 if __name__ == "__main__":
