@@ -18,8 +18,7 @@ git-toggle
 	  - |docs| |docs_check|
 	* - Tests
 	  - |travis| |actions_windows| |actions_macos| |codefactor|
-	* - PyPI
-	  - |pypi-version| |supported-versions| |supported-implementations| |wheel|
+	
 	* - Activity
 	  - |commits-latest| |commits-since| |maintained|
 	* - Other
