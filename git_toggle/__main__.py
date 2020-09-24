@@ -43,9 +43,13 @@ __all__ = ["main"]
 def main(argv: Optional[List[str]] = None) -> int:
 
 	parser = argparse.ArgumentParser(description="Toggle Git remotes between https and ssh.")
-	parser.add_argument("--https", help="Switch the remote to use HTTPS.", action="store_true")
-	parser.add_argument("--http", help="Alias of --https", action="store_true", dest="https")
-	parser.add_argument("--ssh", help="Switch the remote to use SSH.", action="store_true")
+	parser.add_argument(
+			"what",
+			help="Switch the remote type to what? 'http' is an alias of 'https'.",
+			type=str,
+			choices=["http", "https", "ssh"],
+			metavar="{http,https,ssh}",
+			)
 	parser.add_argument("--username", help="Set the remote username.")
 	parser.add_argument("--repo", help="Set the remote repository name.")
 	parser.add_argument(
@@ -53,7 +57,7 @@ def main(argv: Optional[List[str]] = None) -> int:
 			help="Apply the settings to the remote with the given name. Default '%(default)s'.",
 			default="origin",
 			)
-	parser.add_argument("--list", help="List the current remotes.", action="store_true")
+	parser.add_argument("--list", help="List the current remotes and exit..", action="store_true")
 
 	args = parser.parse_args(argv)
 	config = Repo('.').get_config()
@@ -70,11 +74,6 @@ def main(argv: Optional[List[str]] = None) -> int:
 			print(f"{entry[0]}{' ' * (longest_name - len(entry[0]))}  {entry[1]}")
 
 		return 0
-
-	if not any([args.https, args.ssh, args.username]):
-		parser.error("One of --https, --ssh, --username required.")
-	elif args.https and args.ssh:
-		parser.error("Only one of --https, --ssh permitted.")
 
 	try:
 		current_remote = config.get(("remote", args.name), "url").decode("UTF-8")
@@ -110,9 +109,9 @@ def main(argv: Optional[List[str]] = None) -> int:
 	def set_ssh():
 		config.set(("remote", args.name), "url", f"git@{domain}:{username}/{repo}.git".encode("UTF-8"))
 
-	if args.https:
+	if args.what.startswith("http"):
 		set_html()
-	elif args.ssh:
+	elif args.what.startswith("ssh"):
 		set_ssh()
 	else:
 		if current_type == "https":

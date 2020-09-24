@@ -18,7 +18,7 @@ git-toggle
 	  - |docs| |docs_check|
 	* - Tests
 	  - |travis| |actions_windows| |actions_macos| |codefactor|
-	
+
 	* - Activity
 	  - |commits-latest| |commits-since| |maintained|
 	* - Other
