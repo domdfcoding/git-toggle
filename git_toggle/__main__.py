@@ -43,12 +43,16 @@ __all__ = ["main"]
 def main(argv: Optional[List[str]] = None) -> int:
 
 	parser = argparse.ArgumentParser(description="Toggle Git remotes between https and ssh.")
+	parser.add_argument("--list", help="List the current remotes and exit..", action="store_true")
+
 	parser.add_argument(
 			"what",
 			help="Switch the remote type to what? 'http' is an alias of 'https'.",
 			type=str,
-			choices=["http", "https", "ssh"],
+			choices=["http", "https", "ssh", ''],
 			metavar="{http,https,ssh}",
+			nargs="?",
+			default='',
 			)
 	parser.add_argument("--username", help="Set the remote username.")
 	parser.add_argument("--repo", help="Set the remote repository name.")
@@ -57,7 +61,6 @@ def main(argv: Optional[List[str]] = None) -> int:
 			help="Apply the settings to the remote with the given name. Default '%(default)s'.",
 			default="origin",
 			)
-	parser.add_argument("--list", help="List the current remotes and exit..", action="store_true")
 
 	args = parser.parse_args(argv)
 	config = Repo('.').get_config()
@@ -78,7 +81,10 @@ def main(argv: Optional[List[str]] = None) -> int:
 	try:
 		current_remote = config.get(("remote", args.name), "url").decode("UTF-8")
 	except KeyError:
-		current_remote = config.get(("remote", "origin"), "url").decode("UTF-8")
+		try:
+			current_remote = config.get(("remote", "origin"), "url").decode("UTF-8")
+		except KeyError:
+			current_remote = ''
 
 	if re.match(r"^\s*http(s)?://", current_remote):
 		current_type = "https"
