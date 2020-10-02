@@ -35,6 +35,7 @@ from typing import List, Optional
 # 3rd party
 from apeye.url import URL
 from domdf_python_tools.utils import stderr_writer
+from dulwich.errors import NotGitRepository
 from dulwich.repo import Repo  # type: ignore
 
 __all__ = ["main"]
@@ -63,7 +64,11 @@ def main(argv: Optional[List[str]] = None) -> int:
 			)
 
 	args = parser.parse_args(argv)
-	config = Repo('.').get_config()
+
+	try:
+		config = Repo('.').get_config()
+	except NotGitRepository:
+		parser.error("The current directory is not a git repository.")
 
 	if args.list:
 		remotes = []
