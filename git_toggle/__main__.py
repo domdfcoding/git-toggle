@@ -100,7 +100,7 @@ def main(argv: Optional[List[str]] = None) -> int:
 
 	elif re.match(r"^\s*git@", current_remote):
 		current_type = "git"
-		url = URL("git@github.com:domdfcoding/git-toggle.git")
+		url = URL(current_remote)
 		domain = url.fqdn
 		repo = url.path.stem
 		username = str(url.netloc)[(len(domain) + 5):]
