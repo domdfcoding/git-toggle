@@ -98,14 +98,6 @@ git-toggle
 Installation
 --------------
 
+
 .. start installation
-
-``git-toggle`` can be installed from PyPI.
-
-To install with ``pip``:
-
-.. code-block:: bash
-
-	$ python -m pip install git-toggle
-
 .. end installation

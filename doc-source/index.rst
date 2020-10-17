@@ -100,7 +100,7 @@ Installation
 .. start installation
 
 .. installation:: git-toggle
-	:pypi:
+
 	:github:
 
 .. end installation
