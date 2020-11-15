@@ -17,22 +17,9 @@ import pathlib
 __all__ = [
 		"__copyright__",
 		"__version__",
-		"modname",
-		"pypi_name",
-		"__license__",
-		"__author__",
-		"short_desc",
-		"author",
-		"author_email",
-		"github_username",
-		"web",
-		"github_url",
 		"repo_root",
 		"install_requires",
 		"extras_require",
-		"project_urls",
-
-		"import_name",
 		]
 
 __copyright__ = """
@@ -40,23 +27,7 @@ __copyright__ = """
 """
 
 __version__ = "0.0.0"
-modname = "git-toggle"
-pypi_name = "git-toggle"
-import_name = "git_toggle"
-__license__ = "MIT License"
-short_desc = 'Toggle Git remotes between https and ssh.'
-__author__ = author = 'Dominic Davis-Foster'
-author_email = 'dominic@davis-foster.co.uk'
-github_username = "domdfcoding"
-web = github_url = "https://github.com/domdfcoding/git-toggle"
+
 repo_root = pathlib.Path(__file__).parent
 install_requires = (repo_root / "requirements.txt").read_text(encoding="utf-8").split('\n')
 extras_require = {'all': []}
-
-
-
-project_urls = {
-		"Documentation": "https://git-toggle.readthedocs.io",
-		"Issue Tracker": f"{github_url}/issues",
-		"Source Code": github_url,
-		}

@@ -1,6 +1,7 @@
 # This file is managed by 'repo_helper'. Don't edit it directly.
 ---
 
+os: linux
 language: python
 dist: focal
 cache: pip
@@ -25,3 +26,23 @@ script:
 
 stages:
   - test
+
+
+
+jobs:
+  allow_failures:
+    - arch: arm64
+    - python: ['3.9-dev']
+
+  exclude:
+    - python: '3.7'
+      arch: arm64
+    - python: '3.8'
+      arch: arm64
+    - python: '3.9-dev'
+      arch: arm64
+
+  include:
+    - stage: test
+      dist: bionic
+      python: 3.8
