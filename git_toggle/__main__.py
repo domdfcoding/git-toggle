@@ -52,7 +52,7 @@ def main(argv: Optional[List[str]] = None) -> int:
 			type=str,
 			choices=["http", "https", "ssh", ''],
 			metavar="{http,https,ssh}",
-			nargs="?",
+			nargs='?',
 			default='',
 			)
 	parser.add_argument("--username", help="Set the remote username.")
@@ -75,6 +75,10 @@ def main(argv: Optional[List[str]] = None) -> int:
 		for key in list(config.keys()):
 			if key[0] == b"remote":
 				remotes.append((key[1].decode("UTF-8"), config.get(key, "url").decode("UTF-8")))
+
+		if not remotes:
+			stderr_writer("No remotes set!")
+			return 1
 
 		longest_name = max(len(x[0]) for x in remotes)
 
