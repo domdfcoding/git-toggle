@@ -118,19 +118,19 @@ def main(argv: Optional[List[str]] = None) -> int:
 	if args.repo:
 		repo = args.repo
 
-	def set_html():
+	def set_http():
 		config.set(("remote", args.name), "url", f"https://{domain}/{username}/{repo}.git".encode("UTF-8"))
 
 	def set_ssh():
 		config.set(("remote", args.name), "url", f"git@{domain}:{username}/{repo}.git".encode("UTF-8"))
 
 	if args.what.startswith("http"):
-		set_html()
+		set_http()
 	elif args.what.startswith("ssh"):
 		set_ssh()
 	else:
 		if current_type == "https":
-			set_html()
+			set_http()
 		elif current_type == "git":
 			set_ssh()
 
