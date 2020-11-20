@@ -33,17 +33,17 @@ git-toggle
 	:target: https://github.com/domdfcoding/git-toggle/actions?query=workflow%3A%22Docs+Check%22
 	:alt: Docs Check Status
 
-.. |travis| image:: https://img.shields.io/travis/com/domdfcoding/git-toggle/master?logo=travis
-	:target: https://travis-ci.com/domdfcoding/git-toggle
-	:alt: Travis Build Status
+.. |travis| image:: https://github.com/domdfcoding/git-toggle/workflows/Linux%20Tests/badge.svg
+	:target: https://github.com/domdfcoding/git-toggle/actions?query=workflow%3A%Linux+Tests%22
+	:alt: Linux Test Status
 
 .. |actions_windows| image:: https://github.com/domdfcoding/git-toggle/workflows/Windows%20Tests/badge.svg
 	:target: https://github.com/domdfcoding/git-toggle/actions?query=workflow%3A%22Windows+Tests%22
-	:alt: Windows Tests Status
+	:alt: Windows Test Status
 
 .. |actions_macos| image:: https://github.com/domdfcoding/git-toggle/workflows/macOS%20Tests/badge.svg
 	:target: https://github.com/domdfcoding/git-toggle/actions?query=workflow%3A%22macOS+Tests%22
-	:alt: macOS Tests Status
+	:alt: macOS Test Status
 
 .. |requires| image:: https://requires.io/github/domdfcoding/git-toggle/requirements.svg?branch=master
 	:target: https://requires.io/github/domdfcoding/git-toggle/requirements/?branch=master
