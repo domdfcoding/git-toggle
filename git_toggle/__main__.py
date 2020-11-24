@@ -35,8 +35,8 @@ from typing import List, Optional
 # 3rd party
 from apeye.url import URL
 from domdf_python_tools.utils import stderr_writer
-from dulwich.errors import NotGitRepository  # type: ignore
-from dulwich.repo import Repo  # type: ignore
+from dulwich.errors import NotGitRepository
+from dulwich.repo import Repo
 
 __all__ = ["main"]
 
