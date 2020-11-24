@@ -103,7 +103,6 @@ Installation
 .. start installation
 
 .. installation:: git-toggle
-
 	:github:
 
 .. end installation
