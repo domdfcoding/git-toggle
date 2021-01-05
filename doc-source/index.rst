@@ -17,12 +17,13 @@ git-toggle
 	* - Docs
 	  - |docs| |docs_check|
 	* - Tests
-	  - |travis| |actions_windows| |actions_macos| |codefactor| |pre_commit_ci|
-
+	  - |actions_linux| |actions_windows| |actions_macos|
 	* - Activity
 	  - |commits-latest| |commits-since| |maintained|
+	* - QA
+	  - |codefactor| |actions_flake8| |actions_mypy| |pre_commit_ci|
 	* - Other
-	  - |license| |language| |requires| |pre_commit|
+	  - |license| |language| |requires|
 
 .. |docs| rtfd-shield::
 	:project: git-toggle
@@ -32,43 +33,31 @@ git-toggle
 	:workflow: Docs Check
 	:alt: Docs Check Status
 
-.. |travis| actions-shield::
-	:workflow: Linux Tests
+.. |actions_linux| actions-shield::
+	:workflow: Linux
 	:alt: Linux Test Status
 
 .. |actions_windows| actions-shield::
-	:workflow: Windows Tests
+	:workflow: Windows
 	:alt: Windows Test Status
 
 .. |actions_macos| actions-shield::
-	:workflow: macOS Tests
+	:workflow: macOS
 	:alt: macOS Test Status
+
+.. |actions_flake8| actions-shield::
+	:workflow: Flake8
+	:alt: Flake8 Status
+
+.. |actions_mypy| actions-shield::
+	:workflow: mypy
+	:alt: mypy status
 
 .. |requires| requires-io-shield::
 	:alt: Requirements Status
 
 .. |codefactor| codefactor-shield::
 	:alt: CodeFactor Grade
-
-.. |pypi-version| pypi-shield::
-	:project: git-toggle
-	:version:
-	:alt: PyPI - Package Version
-
-.. |supported-versions| pypi-shield::
-	:project: git-toggle
-	:py-versions:
-	:alt: PyPI - Supported Python Versions
-
-.. |supported-implementations| pypi-shield::
-	:project: git-toggle
-	:implementations:
-	:alt: PyPI - Supported Implementations
-
-.. |wheel| pypi-shield::
-	:project: git-toggle
-	:wheel:
-	:alt: PyPI - Wheel
 
 .. |license| github-shield::
 	:license:
@@ -86,11 +75,8 @@ git-toggle
 	:last-commit:
 	:alt: GitHub last commit
 
-.. |maintained| maintained-shield:: 2020
+.. |maintained| maintained-shield:: 2021
 	:alt: Maintenance
-
-.. |pre_commit| pre-commit-shield::
-	:alt: pre-commit
 
 .. |pre_commit_ci| pre-commit-ci-shield::
 	:alt: pre-commit.ci status
