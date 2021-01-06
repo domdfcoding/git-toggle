@@ -5,7 +5,7 @@
 Toggle Git remotes between https and ssh.
 """
 #
-#  Copyright © 2020 Dominic Davis-Foster <dominic@davis-foster.co.uk>
+#  Copyright © 2020-2021 Dominic Davis-Foster <dominic@davis-foster.co.uk>
 #
 #  Permission is hereby granted, free of charge, to any person obtaining a copy
 #  of this software and associated documentation files (the "Software"), to deal
@@ -27,117 +27,117 @@ Toggle Git remotes between https and ssh.
 #
 
 # stdlib
-import argparse
-import re
 import sys
-from typing import List, Optional
+from typing import Optional
 
 # 3rd party
-from apeye.url import URL
-from domdf_python_tools.utils import stderr_writer
+import click
+from consolekit import click_command
+from consolekit.options import auto_default_option, flag_option
+from consolekit.utils import abort
 from dulwich.errors import NotGitRepository
-from dulwich.repo import Repo
+
+# this package
+from git_toggle import Remote, Toggler
 
 __all__ = ["main"]
 
+# Fix intersphinx links
+click.UsageError.__module__ = "click"
 
-def main(argv: Optional[List[str]] = None) -> int:
 
-	parser = argparse.ArgumentParser(description="Toggle Git remotes between https and ssh.")
-	parser.add_argument("--list", help="List the current remotes and exit..", action="store_true")
-
-	parser.add_argument(
-			"what",
-			help="Switch the remote type to what? 'http' is an alias of 'https'.",
-			type=str,
-			choices=["http", "https", "ssh", ''],
-			metavar="{http,https,ssh}",
-			nargs='?',
-			default='',
-			)
-	parser.add_argument("--username", help="Set the remote username.")
-	parser.add_argument("--repo", help="Set the remote repository name.")
-	parser.add_argument(
-			"--name",
-			help="Apply the settings to the remote with the given name. Default '%(default)s'.",
-			default="origin",
-			)
-
-	args = parser.parse_args(argv)
+def get_repo_or_raise() -> Toggler:
+	"""
+	Return a :class:`~.Toggler` instance for the repository in the current working directory,
+	or raise :exc:`click.UsageError` if the current directory is not a git repository.
+	"""
 
 	try:
-		config = Repo('.').get_config()
+		toggler = Toggler('.')
 	except NotGitRepository:
-		parser.error("The current directory is not a git repository.")
+		raise click.UsageError("The current directory is not a git repository.")
 
-	if args.list:
-		remotes = []
-		for key in list(config.keys()):
-			if key[0] == b"remote":
-				remotes.append((key[1].decode("UTF-8"), config.get(key, "url").decode("UTF-8")))
+	return toggler
 
-		if not remotes:
-			stderr_writer("No remotes set!")
-			return 1
 
-		longest_name = max(len(x[0]) for x in remotes)
+def list_remotes_callback(ctx: click.Context, param: click.Option, value: int):
+	"""
+	Callback fore the ``--list`` option.
 
-		for entry in remotes:
-			print(f"{entry[0]}{' ' * (longest_name - len(entry[0]))}  {entry[1]}")
+	:param ctx:
+	:param param:
+	:param value:
+	"""
 
-		return 0
+	if not value or ctx.resilient_parsing:
+		return
+
+	toggler = get_repo_or_raise()
+	remotes = toggler.list_remotes()
+
+	if not remotes:
+		raise abort("No remotes set!")
+
+	longest_name = max(len(x) for x in remotes)
+
+	for entry in remotes.items():
+		click.echo(f"{entry[0]}{' ' * (longest_name - len(entry[0]))}  {entry[1]}")
+
+	ctx.exit()
+
+
+@flag_option(
+		"--list",
+		"list_remotes",
+		help="List the current remotes and exit.",
+		callback=list_remotes_callback,
+		expose_value=False,
+		is_eager=True,
+		)
+@auto_default_option("--repo", help="Set the remote repository name.")
+@auto_default_option("--username", help="Set the remote username.")
+@auto_default_option(
+		"--name",
+		help="Apply the settings to the remote with the given name.",
+		show_default=True,
+		)
+@click.argument(
+		"what",
+		# help="Switch the remote type to what? 'http' is an alias of 'https'.",
+		type=click.Choice(["http", "https", "ssh", ''], case_sensitive=False),
+		metavar="{http,https,ssh}",
+		default='',
+		)
+@click_command()
+def main(
+		what: str,
+		name: str = "origin",
+		username: Optional[str] = None,
+		repo: Optional[str] = None,
+		):
+	"""
+	Toggle Git remotes between https and ssh.
+	"""
+
+	toggler = get_repo_or_raise()
 
 	try:
-		current_remote = config.get(("remote", args.name), "url").decode("UTF-8")
-	except KeyError:
-		try:
-			current_remote = config.get(("remote", "origin"), "url").decode("UTF-8")
-		except KeyError:
-			current_remote = ''
+		current_remote = Remote.from_url(toggler.get_current_remote(name))
+	except ValueError as e:
+		raise abort(str(e))
 
-	if re.match(r"^\s*http(s)?://", current_remote):
-		current_type = "https"
-		url = URL(current_remote)
-		domain = url.fqdn
-		repo = url.path.stem
-		username = str(url.path.parent)[1:]
+	current_remote.set_username(username)
+	current_remote.set_repo(repo)
 
-	elif re.match(r"^\s*git@", current_remote):
-		current_type = "git"
-		url = URL(current_remote)
-		domain = url.fqdn
-		repo = url.path.stem
-		username = str(url.netloc)[(len(domain) + 5):]
+	if what.startswith("http"):
+		current_remote.style = "https"
+	elif what.startswith("ssh"):
+		current_remote.style = "ssh"
 
-	else:
-		stderr_writer(f"Unknown remote type {current_remote}.")
-		return 1
-
-	if args.username:
-		username = args.username
-	if args.repo:
-		repo = args.repo
-
-	def set_http():
-		config.set(("remote", args.name), "url", f"https://{domain}/{username}/{repo}.git".encode("UTF-8"))
-
-	def set_ssh():
-		config.set(("remote", args.name), "url", f"git@{domain}:{username}/{repo}.git".encode("UTF-8"))
-
-	if args.what.startswith("http"):
-		set_http()
-	elif args.what.startswith("ssh"):
-		set_ssh()
-	else:
-		if current_type == "https":
-			set_http()
-		elif current_type == "git":
-			set_ssh()
-
-	config.write_to_path()
+	toggler.set_current_remote(current_remote, name)
 
 	return 0
 
 
 if __name__ == "__main__":
-	sys.exit(main(sys.argv[1:]))
+	sys.exit(main())

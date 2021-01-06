@@ -26,7 +26,7 @@ author = "Dominic Davis-Foster"
 project = "git-toggle"
 slug = re.sub(r'\W+', '-', project.lower())
 release = version = __version__
-copyright = "2020 Dominic Davis-Foster"  # pylint: disable=redefined-builtin
+copyright = "2020-2021 Dominic Davis-Foster"  # pylint: disable=redefined-builtin
 language = "en"
 package_root = "git_toggle"
 
@@ -46,6 +46,8 @@ extensions = [
 		"sphinxcontrib.default_values",
 		"sphinxcontrib.toctree_plus",
 		"seed_intersphinx_mapping",
+		"attr_utils.autoattrs",
+		"attr_utils.annotations",
 		]
 
 sphinxemoji_style = "twemoji"

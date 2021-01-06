@@ -1,7 +1,7 @@
 # Configuration for 'repo_helper' (https://github.com/domdfcoding/repo_helper)
 ---
 modname: 'git-toggle'
-copyright_years: 2020
+copyright_years: 2020-2021
 author: 'Dominic Davis-Foster'
 email: 'dominic@davis-foster.co.uk'
 username: 'domdfcoding'
@@ -22,3 +22,7 @@ python_versions:
 console_scripts:
   - git-toggle=git_toggle.__main__:main
   - git_toggle=git_toggle.__main__:main
+
+extra_sphinx_extensions:
+  - attr_utils.autoattrs
+  - attr_utils.annotations

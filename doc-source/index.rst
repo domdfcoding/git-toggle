@@ -102,6 +102,7 @@ Installation
 	:maxdepth: 3
 	:caption: Documentation
 
+	api
 	contributing
 	Source
 
