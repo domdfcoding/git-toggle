@@ -10,7 +10,6 @@ license: 'MIT'
 short_desc: 'Toggle Git remotes between https and ssh.'
 
 enable_conda: False
-on_pypi: False
 
 python_versions:
   - 3.6
@@ -26,3 +25,13 @@ console_scripts:
 extra_sphinx_extensions:
   - attr_utils.autoattrs
   - attr_utils.annotations
+
+classifiers:
+ - 'Development Status :: 4 - Beta'
+ - 'Environment :: Console'
+ - "Topic :: Software Development :: Version Control :: Git"
+ - "Intended Audience :: Developers"
+ - "Topic :: Utilities"
+
+keywords:
+  - git

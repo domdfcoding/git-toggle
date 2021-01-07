@@ -18,8 +18,10 @@ git-toggle
 	  - |docs| |docs_check|
 	* - Tests
 	  - |actions_linux| |actions_windows| |actions_macos| |coveralls|
+	* - PyPI
+	  - |pypi-version| |supported-versions| |supported-implementations| |wheel|
 	* - Activity
-	  - |commits-latest| |commits-since| |maintained|
+	  - |commits-latest| |commits-since| |maintained| |pypi-downloads|
 	* - QA
 	  - |codefactor| |actions_flake8| |actions_mypy| |pre_commit_ci|
 	* - Other
@@ -62,6 +64,26 @@ git-toggle
 .. |codefactor| codefactor-shield::
 	:alt: CodeFactor Grade
 
+.. |pypi-version| pypi-shield::
+	:project: git-toggle
+	:version:
+	:alt: PyPI - Package Version
+
+.. |supported-versions| pypi-shield::
+	:project: git-toggle
+	:py-versions:
+	:alt: PyPI - Supported Python Versions
+
+.. |supported-implementations| pypi-shield::
+	:project: git-toggle
+	:implementations:
+	:alt: PyPI - Supported Implementations
+
+.. |wheel| pypi-shield::
+	:project: git-toggle
+	:wheel:
+	:alt: PyPI - Wheel
+
 .. |license| github-shield::
 	:license:
 	:alt: License
@@ -81,6 +103,11 @@ git-toggle
 .. |maintained| maintained-shield:: 2021
 	:alt: Maintenance
 
+.. |pypi-downloads| pypi-shield::
+	:project: git-toggle
+	:downloads: month
+	:alt: PyPI - Downloads
+
 .. |pre_commit_ci| pre-commit-ci-shield::
 	:alt: pre-commit.ci status
 
@@ -92,6 +119,7 @@ Installation
 .. start installation
 
 .. installation:: git-toggle
+	:pypi:
 	:github:
 
 .. end installation

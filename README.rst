@@ -19,8 +19,10 @@ git-toggle
 	  - |docs| |docs_check|
 	* - Tests
 	  - |actions_linux| |actions_windows| |actions_macos| |coveralls|
+	* - PyPI
+	  - |pypi-version| |supported-versions| |supported-implementations| |wheel|
 	* - Activity
-	  - |commits-latest| |commits-since| |maintained|
+	  - |commits-latest| |commits-since| |maintained| |pypi-downloads|
 	* - QA
 	  - |codefactor| |actions_flake8| |actions_mypy| |pre_commit_ci|
 	* - Other
@@ -66,6 +68,22 @@ git-toggle
 	:target: https://www.codefactor.io/repository/github/domdfcoding/git-toggle
 	:alt: CodeFactor Grade
 
+.. |pypi-version| image:: https://img.shields.io/pypi/v/git-toggle
+	:target: https://pypi.org/project/git-toggle/
+	:alt: PyPI - Package Version
+
+.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/git-toggle?logo=python&logoColor=white
+	:target: https://pypi.org/project/git-toggle/
+	:alt: PyPI - Supported Python Versions
+
+.. |supported-implementations| image:: https://img.shields.io/pypi/implementation/git-toggle
+	:target: https://pypi.org/project/git-toggle/
+	:alt: PyPI - Supported Implementations
+
+.. |wheel| image:: https://img.shields.io/pypi/wheel/git-toggle
+	:target: https://pypi.org/project/git-toggle/
+	:alt: PyPI - Wheel
+
 .. |license| image:: https://img.shields.io/github/license/domdfcoding/git-toggle
 	:target: https://github.com/domdfcoding/git-toggle/blob/master/LICENSE
 	:alt: License
@@ -84,6 +102,10 @@ git-toggle
 .. |maintained| image:: https://img.shields.io/maintenance/yes/2021
 	:alt: Maintenance
 
+.. |pypi-downloads| image:: https://img.shields.io/pypi/dm/git-toggle
+	:target: https://pypi.org/project/git-toggle/
+	:alt: PyPI - Downloads
+
 .. |pre_commit_ci| image:: https://results.pre-commit.ci/badge/github/domdfcoding/git-toggle/master.svg
 	:target: https://results.pre-commit.ci/latest/github/domdfcoding/git-toggle/master
 	:alt: pre-commit.ci status
@@ -98,12 +120,12 @@ Installation
 
 .. start installation
 
-``git-toggle`` can be installed from GitHub.
+``git-toggle`` can be installed from PyPI.
 
 To install with ``pip``:
 
 .. code-block:: bash
 
-	$ python -m pip install git+https://github.com/domdfcoding/git-toggle
+	$ python -m pip install git-toggle
 
 .. end installation
