@@ -17,7 +17,7 @@ git-toggle
 	* - Docs
 	  - |docs| |docs_check|
 	* - Tests
-	  - |actions_linux| |actions_windows| |actions_macos|
+	  - |actions_linux| |actions_windows| |actions_macos| |coveralls|
 	* - Activity
 	  - |commits-latest| |commits-since| |maintained|
 	* - QA
@@ -55,6 +55,9 @@ git-toggle
 
 .. |requires| requires-io-shield::
 	:alt: Requirements Status
+
+.. |coveralls| coveralls-shield::
+	:alt: Coverage
 
 .. |codefactor| codefactor-shield::
 	:alt: CodeFactor Grade

@@ -1,0 +1,12 @@
+Usage: main [OPTIONS] [[http|https|ssh]]
+
+  Toggle Git remotes between https and ssh.
+
+Options:
+  --name TEXT      Apply the settings to the remote with the given name.
+                   [default: origin]
+
+  --username TEXT  Set the remote username.
+  --repo TEXT      Set the remote repository name.
+  --list           List the current remotes and exit.
+  -h, --help       Show this message and exit.

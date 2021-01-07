@@ -18,7 +18,7 @@ git-toggle
 	* - Docs
 	  - |docs| |docs_check|
 	* - Tests
-	  - |actions_linux| |actions_windows| |actions_macos|
+	  - |actions_linux| |actions_windows| |actions_macos| |coveralls|
 	* - Activity
 	  - |commits-latest| |commits-since| |maintained|
 	* - QA
@@ -57,6 +57,10 @@ git-toggle
 .. |requires| image:: https://requires.io/github/domdfcoding/git-toggle/requirements.svg?branch=master
 	:target: https://requires.io/github/domdfcoding/git-toggle/requirements/?branch=master
 	:alt: Requirements Status
+
+.. |coveralls| image:: https://img.shields.io/coveralls/github/domdfcoding/git-toggle/master?logo=coveralls
+	:target: https://coveralls.io/github/domdfcoding/git-toggle?branch=master
+	:alt: Coverage
 
 .. |codefactor| image:: https://img.shields.io/codefactor/grade/github/domdfcoding/git-toggle?logo=codefactor
 	:target: https://www.codefactor.io/repository/github/domdfcoding/git-toggle
