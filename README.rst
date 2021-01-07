@@ -91,7 +91,7 @@ git-toggle
 .. |language| image:: https://img.shields.io/github/languages/top/domdfcoding/git-toggle
 	:alt: GitHub top language
 
-.. |commits-since| image:: https://img.shields.io/github/commits-since/domdfcoding/git-toggle/v0.0.0
+.. |commits-since| image:: https://img.shields.io/github/commits-since/domdfcoding/git-toggle/v0.1.0
 	:target: https://github.com/domdfcoding/git-toggle/pulse
 	:alt: GitHub commits since tagged version
 
