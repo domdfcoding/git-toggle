@@ -50,7 +50,7 @@ def get_repo_or_raise() -> Toggler:
 	"""
 	Return a :class:`~.Toggler` instance for the repository in the current working directory,
 	or raise :exc:`click.UsageError` if the current directory is not a git repository.
-	"""
+	"""  # noqa: D400
 
 	try:
 		toggler = Toggler('.')

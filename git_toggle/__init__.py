@@ -55,7 +55,10 @@ class Toggler(southwark.repo.Repo):
 	"""
 
 	def __init__(self, repo: Union[dulwich.repo.Repo, PathLike]):
-		super().__init__(repo)
+		if isinstance(repo, dulwich.repo.Repo):
+			super().__init__(repo.path)
+		else:
+			super().__init__(repo)
 
 	def get_current_remote(self, name: str = "origin") -> str:
 		"""
