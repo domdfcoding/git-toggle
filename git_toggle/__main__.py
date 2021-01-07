@@ -40,7 +40,7 @@ from dulwich.errors import NotGitRepository
 # this package
 from git_toggle import Remote, Toggler
 
-__all__ = ["main"]
+__all__ = ["main", "get_repo_or_raise"]
 
 # Fix intersphinx links
 click.UsageError.__module__ = "click"
@@ -105,7 +105,7 @@ def list_remotes_callback(ctx: click.Context, param: click.Option, value: int):
 		"what",
 		# help="Switch the remote type to what? 'http' is an alias of 'https'.",
 		type=click.Choice(["http", "https", "ssh", ''], case_sensitive=False),
-		metavar="{http,https,ssh}",
+		metavar="[[http|https|ssh]]",
 		default='',
 		)
 @click_command()

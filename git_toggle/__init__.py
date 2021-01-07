@@ -103,9 +103,6 @@ class Remote:
 	#: The style of remote.
 	style: Literal["https", "ssh"] = attr.ib(converter=str, validator=attr.validators.in_(("https", "ssh")))
 
-	#: The URL of the remote.
-	url: URL = attr.ib(converter=URL)
-
 	#: The domain of the remote.
 	domain: str = attr.ib(converter=str)
 
@@ -140,7 +137,6 @@ class Remote:
 		if re.match(r"^\s*http(s)?://", str(url)):
 			return cls(
 					"https",
-					url=url,
 					domain=url.fqdn,
 					repo=url.path.stem,
 					username=str(url.path.parent)[1:],
@@ -150,7 +146,6 @@ class Remote:
 			domain = url.fqdn
 			return cls(
 					"ssh",
-					url=url,
 					domain=domain,
 					repo=url.path.stem,
 					username=str(url.netloc)[(len(domain) + 5):],
