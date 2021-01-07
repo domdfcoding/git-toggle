@@ -57,20 +57,6 @@ class Toggler(southwark.repo.Repo):
 	def __init__(self, repo: Union[dulwich.repo.Repo, PathLike]):
 		super().__init__(repo)
 
-	def list_remotes(self) -> Dict[str, str]:
-		"""
-		Returns a mapping of remote names to remote URLs, for the repo's current remotes.
-		"""
-
-		remotes = {}
-		config = self.get_config()
-
-		for key in list(config.keys()):
-			if key[0] == b"remote":
-				remotes[key[1].decode("UTF-8")] = config.get(key, "url").decode("UTF-8")
-
-		return remotes
-
 	def get_current_remote(self, name: str = "origin") -> str:
 		"""
 		Return the current remote.
