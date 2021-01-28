@@ -2,7 +2,7 @@
 import pytest
 from dulwich.repo import Repo
 
-pytest_plugins = ("domdf_python_tools.testing", )
+pytest_plugins = ("coincidence", )
 
 
 @pytest.fixture()

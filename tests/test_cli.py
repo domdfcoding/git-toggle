@@ -4,9 +4,9 @@ import tempfile
 # 3rd party
 import click
 import pytest
-from click.testing import CliRunner, Result
+from coincidence import check_file_regression
+from consolekit.testing import CliRunner, Result
 from domdf_python_tools.paths import in_directory
-from domdf_python_tools.testing import check_file_regression
 from dulwich.repo import Repo
 from pytest_regressions.file_regression import FileRegressionFixture
 
