@@ -30,7 +30,7 @@ def test_list_remotes(temp_repo, file_regression: FileRegressionFixture):
 	with in_directory(temp_repo):
 		runner = CliRunner()
 
-		result: Result = runner.invoke(main, catch_exceptions=False, args="--list")
+		result: Result = runner.invoke(main, args="--list")
 		assert result.exit_code == 0
 		check_file_regression(result.stdout, file_regression)
 
@@ -41,7 +41,7 @@ def test_list_remotes_no_remotes(tmp_pathplus):
 	with in_directory(tmp_pathplus):
 		runner = CliRunner()
 
-		result: Result = runner.invoke(main, catch_exceptions=False, args="--list")
+		result: Result = runner.invoke(main, args="--list")
 		assert result.exit_code == 1
 		assert result.stdout == "No remotes set!\nAborted!\n"
 
@@ -52,22 +52,22 @@ def test_toggle(temp_repo):
 	with in_directory(temp_repo):
 		runner = CliRunner()
 
-		result: Result = runner.invoke(main, catch_exceptions=False)
+		result: Result = runner.invoke(main)
 		assert result.exit_code == 0
 		assert toggler.get_current_remote() == "https://github.com/domdfcoding/git-toggle.git"
 		assert toggler.get_current_remote("upstream") == "git@github.com:repo-helper/git-toggler.git"
 
-		result = runner.invoke(main, catch_exceptions=False, args="ssh")
+		result = runner.invoke(main, args="ssh")
 		assert result.exit_code == 0
 		assert toggler.get_current_remote() == "git@github.com:domdfcoding/git-toggle.git"
 		assert toggler.get_current_remote("upstream") == "git@github.com:repo-helper/git-toggler.git"
 
-		result = runner.invoke(main, catch_exceptions=False, args="http")
+		result = runner.invoke(main, args="http")
 		assert result.exit_code == 0
 		assert toggler.get_current_remote() == "https://github.com/domdfcoding/git-toggle.git"
 		assert toggler.get_current_remote("upstream") == "git@github.com:repo-helper/git-toggler.git"
 
-		result = runner.invoke(main, catch_exceptions=False, args=["https", "--name", "upstream"])
+		result = runner.invoke(main, args=["https", "--name", "upstream"])
 		assert result.exit_code == 0
 		assert toggler.get_current_remote() == "https://github.com/domdfcoding/git-toggle.git"
 		assert toggler.get_current_remote("upstream") == "https://github.com/repo-helper/git-toggler.git"
@@ -77,7 +77,7 @@ def test_toggle_errors(temp_repo):
 	with in_directory(temp_repo):
 		runner = CliRunner()
 
-		result: Result = runner.invoke(main, catch_exceptions=False, args="ftp")
+		result: Result = runner.invoke(main, args="ftp")
 		assert result.exit_code == 2
 		error = "Error: Invalid value for '[[http|https|ssh]]': invalid choice: ftp. (choose from http, https, ssh, )"
 		assert result.stdout.splitlines()[-1] == error
@@ -86,10 +86,10 @@ def test_toggle_errors(temp_repo):
 def test_help(file_regression: FileRegressionFixture):
 	runner = CliRunner()
 
-	result: Result = runner.invoke(main, catch_exceptions=False, args="-h")
+	result: Result = runner.invoke(main, args="-h")
 	assert result.exit_code == 0
-	check_file_regression(result.stdout.rstrip(), file_regression)
+	result.check_stdout(file_regression)
 
-	result = runner.invoke(main, catch_exceptions=False, args="--help")
+	result = runner.invoke(main, args="--help")
 	assert result.exit_code == 0
-	check_file_regression(result.stdout.rstrip(), file_regression)
+	result.check_stdout(file_regression)
