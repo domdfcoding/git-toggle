@@ -23,7 +23,7 @@ rst_prolog = f""".. |pkgname| replace:: git-toggle
 """
 
 author = "Dominic Davis-Foster"
-project = "git-toggle"
+project = "git-toggle".replace('_', '-')
 slug = re.sub(r'\W+', '-', project.lower())
 release = version = __version__
 copyright = "2020-2021 Dominic Davis-Foster"  # pylint: disable=redefined-builtin
@@ -34,7 +34,9 @@ extensions = [
 		"sphinx_toolbox",
 		"sphinx_toolbox.more_autodoc",
 		"sphinx_toolbox.more_autosummary",
+		"sphinx_toolbox.documentation_summary",
 		"sphinx_toolbox.tweaks.param_dash",
+		"sphinx_toolbox.tweaks.latex_toc",
 		"sphinx.ext.intersphinx",
 		"sphinx.ext.mathjax",
 		"sphinxcontrib.httpdomain",
@@ -45,6 +47,7 @@ extensions = [
 		"sphinx_copybutton",
 		"sphinxcontrib.default_values",
 		"sphinxcontrib.toctree_plus",
+		"sphinx_debuginfo",
 		"seed_intersphinx_mapping",
 		"attr_utils.autoattrs",
 		"attr_utils.annotations",
@@ -105,7 +108,7 @@ add_module_names = False
 hide_none_rtype = True
 all_typevars = True
 overloads_location = "bottom"
-
+documentation_summary = "Toggle Git remotes between https and ssh."
 
 autodoc_exclude_members = [   # Exclude "standard" methods.
 		"__dict__",

@@ -54,7 +54,7 @@ class Toggler(southwark.repo.Repo):
 	:param repo: The repository to toggle remotes for.
 	"""
 
-	def __init__(self, repo: Union[dulwich.repo.Repo, PathLike]):
+	def __init__(self, repo: Union[dulwich.repo.Repo, PathLike], *args, **kwargs):
 		if isinstance(repo, dulwich.repo.Repo):
 			super().__init__(repo.path)
 		else:

@@ -10,6 +10,7 @@ license: 'MIT'
 short_desc: 'Toggle Git remotes between https and ssh.'
 
 enable_conda: False
+use_whey: True
 
 python_versions:
   - 3.6
