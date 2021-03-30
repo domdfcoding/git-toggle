@@ -4,7 +4,7 @@ build-backend = "whey"
 
 [project]
 name = "git-toggle"
-version = "0.1.0"
+version = "0.1.1"
 description = "Toggle Git remotes between https and ssh."
 readme = "README.rst"
 keywords = [ "git",]
