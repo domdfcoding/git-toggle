@@ -28,7 +28,7 @@ Toggle Git remotes between https and ssh.
 
 # stdlib
 import re
-from typing import Dict, Optional, Union
+from typing import Optional, Union
 
 # 3rd party
 import attr
