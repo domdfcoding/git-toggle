@@ -11,7 +11,6 @@ short_desc: 'Toggle Git remotes between https and ssh.'
 
 enable_conda: False
 use_whey: True
-mypy_version: "0.812"
 
 python_versions:
   - 3.6
