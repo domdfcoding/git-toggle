@@ -42,3 +42,7 @@ python-implementations = [ "CPython", "PyPy",]
 platforms = [ "Windows", "macOS", "Linux",]
 license-key = "MIT"
 package = "git_toggle"
+
+[tool.mkrecipe]
+conda-channels = [ "domdfcoding",]
+extras = "all"
