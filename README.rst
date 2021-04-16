@@ -24,7 +24,7 @@ git-toggle
 	* - Activity
 	  - |commits-latest| |commits-since| |maintained| |pypi-downloads|
 	* - QA
-	  - |codefactor| |actions_flake8| |actions_mypy| |pre_commit_ci|
+	  - |codefactor| |actions_flake8| |actions_mypy|
 	* - Other
 	  - |license| |language| |requires|
 
@@ -105,10 +105,6 @@ git-toggle
 .. |pypi-downloads| image:: https://img.shields.io/pypi/dm/git-toggle
 	:target: https://pypi.org/project/git-toggle/
 	:alt: PyPI - Downloads
-
-.. |pre_commit_ci| image:: https://results.pre-commit.ci/badge/github/domdfcoding/git-toggle/master.svg
-	:target: https://results.pre-commit.ci/latest/github/domdfcoding/git-toggle/master
-	:alt: pre-commit.ci status
 
 .. end shields
 
