@@ -5,6 +5,7 @@ git-toggle
 .. start short_desc
 
 .. documentation-summary::
+	:meta:
 
 .. end short_desc
 
@@ -57,7 +58,8 @@ git-toggle
 		:workflow: mypy
 		:alt: mypy status
 
-	.. |requires| requires-io-shield::
+	.. |requires| image:: https://dependency-dash.herokuapp.com/github/domdfcoding/git-toggle/badge.svg
+		:target: https://dependency-dash.herokuapp.com/github/domdfcoding/git-toggle/
 		:alt: Requirements Status
 
 	.. |coveralls| coveralls-shield::
@@ -102,7 +104,7 @@ git-toggle
 		:last-commit:
 		:alt: GitHub last commit
 
-	.. |maintained| maintained-shield:: 2021
+	.. |maintained| maintained-shield:: 2022
 		:alt: Maintenance
 
 	.. |pypi-downloads| pypi-shield::
@@ -123,6 +125,13 @@ Installation
 
 .. end installation
 
+
+Contents
+===========
+
+.. html-section::
+
+
 .. toctree::
 	:hidden:
 
@@ -130,11 +139,17 @@ Installation
 
 .. toctree::
 	:maxdepth: 3
-	:caption: Documentation
 
 	api
 	contributing
 	Source
+	license
+
+.. sidebar-links::
+	:caption: Links
+	:github:
+	:pypi: git-toggle
+
 
 .. start links
 
@@ -142,6 +157,6 @@ Installation
 
 	View the :ref:`Function Index <genindex>` or browse the `Source Code <_modules/index.html>`__.
 
-	`Browse the GitHub Repository <https://github.com/domdfcoding/git-toggle>`__
+	:github:repo:`Browse the GitHub Repository <domdfcoding/git-toggle>`
 
 .. end links

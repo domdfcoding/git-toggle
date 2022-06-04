@@ -56,8 +56,8 @@ git-toggle
 	:target: https://github.com/domdfcoding/git-toggle/actions?query=workflow%3A%22mypy%22
 	:alt: mypy status
 
-.. |requires| image:: https://requires.io/github/domdfcoding/git-toggle/requirements.svg?branch=master
-	:target: https://requires.io/github/domdfcoding/git-toggle/requirements/?branch=master
+.. |requires| image:: https://dependency-dash.herokuapp.com/github/domdfcoding/git-toggle/badge.svg
+	:target: https://dependency-dash.herokuapp.com/github/domdfcoding/git-toggle/
 	:alt: Requirements Status
 
 .. |coveralls| image:: https://img.shields.io/coveralls/github/domdfcoding/git-toggle/master?logo=coveralls
@@ -99,7 +99,7 @@ git-toggle
 	:target: https://github.com/domdfcoding/git-toggle/commit/master
 	:alt: GitHub last commit
 
-.. |maintained| image:: https://img.shields.io/maintenance/yes/2021
+.. |maintained| image:: https://img.shields.io/maintenance/yes/2022
 	:alt: Maintenance
 
 .. |pypi-downloads| image:: https://img.shields.io/pypi/dm/git-toggle

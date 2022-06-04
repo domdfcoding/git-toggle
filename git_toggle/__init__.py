@@ -163,7 +163,7 @@ class Remote:
 
 		:param username:
 
-		:return: The new value of :attr:`~.Remote.username``
+		:return: The new value of :attr:`~.Remote.username`
 		"""
 
 		if username:
@@ -177,7 +177,7 @@ class Remote:
 
 		:param repo:
 
-		:return: The new value of :attr:`~.Remote.repo``
+		:return: The new value of :attr:`~.Remote.repo`
 		"""
 
 		if repo:

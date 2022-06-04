@@ -1,7 +1,7 @@
 # Configuration for 'repo_helper' (https://github.com/domdfcoding/repo_helper)
 ---
 modname: 'git-toggle'
-copyright_years: 2020-2021
+copyright_years: 2020-2022
 author: 'Dominic Davis-Foster'
 email: 'dominic@davis-foster.co.uk'
 username: 'domdfcoding'
@@ -38,3 +38,12 @@ classifiers:
 
 keywords:
   - git
+
+sphinx_conf_epilogue:
+ - nitpicky = True
+
+standalone_contrib_guide: true
+
+intersphinx_mapping:
+ - "'apeye': ('https://apeye.readthedocs.io/en/latest/', None)"
+ - "'dulwich': ('https://www.dulwich.io/docs', None)"
