@@ -1,6 +1,6 @@
 # 3rd party
 import pytest
-from apeye import URL
+from apeye_core import URL
 
 # this package
 from git_toggle import Remote

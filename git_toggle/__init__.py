@@ -34,7 +34,7 @@ from typing import Optional, Union
 import attr
 import dulwich.repo
 import southwark.repo
-from apeye import URL
+from apeye_core import URL
 from domdf_python_tools.typing import PathLike
 from typing_extensions import Literal
 
