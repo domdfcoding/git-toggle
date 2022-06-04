@@ -28,7 +28,7 @@ Toggle Git remotes between https and ssh.
 
 # stdlib
 import sys
-from typing import Optional
+from typing import Any, Optional
 
 # 3rd party
 import click
@@ -86,6 +86,45 @@ def list_remotes_callback(ctx: click.Context, param: click.Option, value: int):
 	ctx.exit()
 
 
+class _Choice(click.Choice):
+
+	def convert(
+			self,
+			value: Any,
+			param: Optional[click.Parameter],
+			ctx: Optional[click.Context],
+			) -> Any:
+		# Match through normalization and case sensitivity
+		# first do token_normalize_func, then lowercase
+		# preserve original `value` to produce an accurate message in
+		# `self.fail`
+		normed_value = value
+		normed_choices = {choice: choice for choice in self.choices}
+
+		if ctx is not None and ctx.token_normalize_func is not None:
+			normed_value = ctx.token_normalize_func(value)
+			normed_choices = {
+					ctx.token_normalize_func(normed_choice): original
+					for normed_choice, original in normed_choices.items()
+					}
+
+		if not self.case_sensitive:
+			normed_value = normed_value.casefold()
+			normed_choices = {
+					normed_choice.casefold(): original
+					for normed_choice, original in normed_choices.items()
+					}
+
+		if normed_value in normed_choices:
+			return normed_choices[normed_value]
+
+		self.fail(
+				f"invalid choice: {value}. (choose from {', '.join(self.choices)})",
+				param,
+				ctx,
+				)
+
+
 @flag_option(
 		"--list",
 		"list_remotes",
@@ -104,7 +143,7 @@ def list_remotes_callback(ctx: click.Context, param: click.Option, value: int):
 @click.argument(
 		"what",
 		# help="Switch the remote type to what? 'http' is an alias of 'https'.",
-		type=click.Choice(["http", "https", "ssh", ''], case_sensitive=False),
+		type=_Choice(["http", "https", "ssh", ''], case_sensitive=False),
 		metavar="[[http|https|ssh]]",
 		default='',
 		)
