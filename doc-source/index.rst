@@ -58,8 +58,8 @@ git-toggle
 		:workflow: mypy
 		:alt: mypy status
 
-	.. |requires| image:: https://dependency-dash.herokuapp.com/github/domdfcoding/git-toggle/badge.svg
-		:target: https://dependency-dash.herokuapp.com/github/domdfcoding/git-toggle/
+	.. |requires| image:: https://dependency-dash.repo-helper.uk/github/domdfcoding/git-toggle/badge.svg
+		:target: https://dependency-dash.repo-helper.uk/github/domdfcoding/git-toggle/
 		:alt: Requirements Status
 
 	.. |coveralls| coveralls-shield::
