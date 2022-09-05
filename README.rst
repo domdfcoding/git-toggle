@@ -56,8 +56,8 @@ git-toggle
 	:target: https://github.com/domdfcoding/git-toggle/actions?query=workflow%3A%22mypy%22
 	:alt: mypy status
 
-.. |requires| image:: https://dependency-dash.herokuapp.com/github/domdfcoding/git-toggle/badge.svg
-	:target: https://dependency-dash.herokuapp.com/github/domdfcoding/git-toggle/
+.. |requires| image:: https://dependency-dash.repo-helper.uk/github/domdfcoding/git-toggle/badge.svg
+	:target: https://dependency-dash.repo-helper.uk/github/domdfcoding/git-toggle/
 	:alt: Requirements Status
 
 .. |coveralls| image:: https://img.shields.io/coveralls/github/domdfcoding/git-toggle/master?logo=coveralls
