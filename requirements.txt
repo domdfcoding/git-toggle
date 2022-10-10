@@ -1,8 +1,10 @@
+# In latest dulwich the config is a multi dict, which results in duplicate URL keys and broken config.
+# Caused by https://github.com/jelmer/dulwich/commit/d590a8da108c980a4dede1bf98420ac20fdc62d9
 apeye-core>=1.0.0
 attrs>=20.3.0
 click>=7.1.2
 consolekit>=1.0.0
 domdf-python-tools>=0.8.3
-dulwich>=0.19.16
+dulwich<=0.20.33,>=0.19.16
 southwark>=0.7.0
 typing-extensions>=3.7.4.3
