@@ -51,5 +51,5 @@ known_third_party = [
     "southwark",
     "typing_extensions",
 ]
-known_first_party = "git_toggle"
+known_first_party = [ "git_toggle",]
 line_length = 115
