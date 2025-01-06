@@ -105,8 +105,7 @@ class _Choice(click.Choice):
 			normed_value = ctx.token_normalize_func(value)
 			normed_choices = {
 					ctx.token_normalize_func(normed_choice): original
-					for normed_choice,
-					original in normed_choices.items()
+					for normed_choice, original in normed_choices.items()
 					}
 
 		if not self.case_sensitive:
