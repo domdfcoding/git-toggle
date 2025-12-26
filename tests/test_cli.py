@@ -6,7 +6,7 @@ import click
 import pytest
 from coincidence import check_file_regression
 from consolekit.testing import CliRunner, Result
-from domdf_python_tools.paths import in_directory
+from domdf_python_tools.paths import PathPlus, in_directory
 from dulwich.repo import Repo
 from pytest_regressions.file_regression import FileRegressionFixture
 
@@ -15,7 +15,7 @@ from git_toggle import Toggler
 from git_toggle.__main__ import get_repo_or_raise, main
 
 
-def test_get_repo_or_raise(temp_repo):
+def test_get_repo_or_raise(temp_repo: PathPlus):
 
 	with tempfile.TemporaryDirectory() as tmpdir:
 		with in_directory(tmpdir):
@@ -26,7 +26,7 @@ def test_get_repo_or_raise(temp_repo):
 		assert isinstance(get_repo_or_raise(), Repo)
 
 
-def test_list_remotes(temp_repo, file_regression: FileRegressionFixture):
+def test_list_remotes(temp_repo: PathPlus, file_regression: FileRegressionFixture):
 	with in_directory(temp_repo):
 		runner = CliRunner()
 
@@ -35,7 +35,7 @@ def test_list_remotes(temp_repo, file_regression: FileRegressionFixture):
 		check_file_regression(result.stdout, file_regression)
 
 
-def test_list_remotes_no_remotes(tmp_pathplus):
+def test_list_remotes_no_remotes(tmp_pathplus: PathPlus):
 	Repo.init(tmp_pathplus)
 
 	with in_directory(tmp_pathplus):
@@ -46,7 +46,7 @@ def test_list_remotes_no_remotes(tmp_pathplus):
 		assert result.stdout == "No remotes set!\nAborted!\n"
 
 
-def test_toggle(temp_repo):
+def test_toggle(temp_repo: PathPlus):
 	toggler = Toggler(temp_repo)
 
 	with in_directory(temp_repo):
@@ -73,7 +73,7 @@ def test_toggle(temp_repo):
 		assert toggler.get_current_remote("upstream") == "https://github.com/repo-helper/git-toggler.git"
 
 
-def test_toggle_errors(temp_repo):
+def test_toggle_errors(temp_repo: PathPlus):
 	with in_directory(temp_repo):
 		runner = CliRunner()
 

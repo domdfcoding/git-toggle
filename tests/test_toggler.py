@@ -1,16 +1,18 @@
 # 3rd party
 from apeye_core import URL
+from coincidence.regressions import AdvancedDataRegressionFixture
+from domdf_python_tools.paths import PathPlus
 
 # this package
 from git_toggle import Remote, Toggler
 
 
-def test_creation(temp_repo, data_regression):
+def test_creation(temp_repo: PathPlus, advanced_data_regression: AdvancedDataRegressionFixture):
 	toggler = Toggler(temp_repo)
-	data_regression.check(toggler.list_remotes())
+	advanced_data_regression.check(toggler.list_remotes())
 
 
-def test_get_current_remote(temp_repo):
+def test_get_current_remote(temp_repo: PathPlus):
 	toggler = Toggler(temp_repo)
 
 	assert toggler.get_current_remote() == "https://github.com/domdfcoding/git-toggle.git"
@@ -21,12 +23,12 @@ def test_get_current_remote(temp_repo):
 	# TODO: test get_current_remote with no remotes set
 
 
-def test_get_current_remote_no_remotes(tmp_pathplus):
+def test_get_current_remote_no_remotes(tmp_pathplus: PathPlus):
 	toggler = Toggler.init(tmp_pathplus)
 	assert toggler.get_current_remote() == ''
 
 
-def test_set_current_remote(temp_repo):
+def test_set_current_remote(temp_repo: PathPlus):
 	toggler = Toggler(temp_repo)
 
 	toggler.set_current_remote("git@github.com:domdfcoding/git-toggle.git")

@@ -47,7 +47,7 @@ __email__: str = "dominic@davis-foster.co.uk"
 __all__ = ["Remote", "Toggler"]
 
 
-class Toggler(southwark.repo.Repo):
+class Toggler(southwark.repo.Repo):  # noqa: PRM002
 	"""
 	Toggle Git remotes between https and ssh.
 
@@ -157,7 +157,7 @@ class Remote:
 		else:
 			raise ValueError(f"Unknown remote type for {url}.")
 
-	def set_username(self, username: Optional[str]):
+	def set_username(self, username: Optional[str]) -> str:
 		"""
 		If ``username`` is not :py:obj:`None`, set :attr:`~.Remote.username` to that value.
 
@@ -171,7 +171,7 @@ class Remote:
 
 		return self.username
 
-	def set_repo(self, repo: Optional[str]):
+	def set_repo(self, repo: Optional[str]) -> str:
 		"""
 		If ``repo`` is not :py:obj:`None`, set :attr:`~.Remote.repo` to that value.
 

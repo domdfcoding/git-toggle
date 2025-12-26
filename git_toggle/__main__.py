@@ -60,7 +60,7 @@ def get_repo_or_raise() -> Toggler:
 	return toggler
 
 
-def list_remotes_callback(ctx: click.Context, param: click.Option, value: int):
+def list_remotes_callback(ctx: click.Context, param: click.Option, value: int) -> None:
 	"""
 	Callback fore the ``--list`` option.
 
@@ -154,7 +154,7 @@ def main(
 		name: str = "origin",
 		username: Optional[str] = None,
 		repo: Optional[str] = None,
-		):
+		) -> None:
 	"""
 	Toggle Git remotes between https and ssh.
 	"""
@@ -175,8 +175,6 @@ def main(
 		current_remote.style = "ssh"
 
 	toggler.set_current_remote(current_remote, name)
-
-	return 0
 
 
 if __name__ == "__main__":
