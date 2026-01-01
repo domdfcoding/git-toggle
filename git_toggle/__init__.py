@@ -92,6 +92,7 @@ class Toggler(southwark.repo.Repo):  # noqa: PRM002
 
 		config = self.get_config()
 
+		del config[(b'remote', name.encode("UTF-8"))][b"url"]
 		config.set(("remote", name), "url", str(url).encode("UTF-8"))
 
 		config.write_to_path()
