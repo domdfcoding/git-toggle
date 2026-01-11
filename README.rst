@@ -103,7 +103,7 @@ git-toggle
 	:alt: Maintenance
 
 .. |pypi-downloads| image:: https://img.shields.io/pypi/dm/git-toggle
-	:target: https://pypi.org/project/git-toggle/
+	:target: https://pypistats.org/packages/git-toggle
 	:alt: PyPI - Downloads
 
 .. end shields
